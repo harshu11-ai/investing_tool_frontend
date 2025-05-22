@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
@@ -14,7 +15,7 @@ export default function App() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/weekday", {
+      const res = await axios.get("https://investing-tool.onrender.com", {
         params: {
           ticker,
           start,
