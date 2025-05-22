@@ -94,14 +94,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-blue-900 text-gray-900 p-6 font-sans">
       <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
-        {/*Ticker Search Bar*/}
-        {renderSuggestions()}
         <h1 className="text-3xl font-bold mb-2 text-center text-blue-900">
           📈 Investment Strategy Simulator
         </h1>
         <p className="text-center text-gray-500 mb-6">
           Analyze portfolio growth by weekday, ticker, and strategy
         </p>
+
+        {/*Ticker Search Bar*/}
+        {renderSuggestions()}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
