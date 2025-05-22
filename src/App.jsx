@@ -14,6 +14,7 @@ export default function App() {
   const [dartkMode, setDarkMode] = useState(false);
 
   const fetchData = async () => {
+    console.log("Fetching data...");
     try {
       const res = await axios.get("https://investing-tool.onrender.com", {
         params: {
@@ -25,6 +26,7 @@ export default function App() {
           price_type: priceType,
         },
       });
+      console.log("Data fetched successfully:", res.data);
       setResults(res.data);
     } catch (err) {
       console.error("Error fetching simulation:", err);
