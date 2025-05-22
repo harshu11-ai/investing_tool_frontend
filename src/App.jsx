@@ -135,28 +135,28 @@ export default function App() {
 
         {results?.Results && (
           <div className="mt-10">
-           <h2 className="text-2xl font-semibold text-blue-700 text-center mb-4">
-            {results.Weekday} Results
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
-            <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
-             <p><strong>Total Invested:</strong><br />${results.Results["Total Invested"].toFixed(2)}</p>
+            <h2 className="text-2xl font-semibold text-blue-700 text-center mb-4">
+              {results.Weekday} Results
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+              <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
+              <p><strong>Total Invested:</strong><br />${results.Results["Total Invested"].toFixed(2)}</p>
+              </div>
+              <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
+                <p><strong>Total Shares:</strong><br />{results.Results["Total Shares"].toFixed(2)}</p>
+              </div>
+              <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
+              <p><strong>Final Value:</strong><br />${results.Results["Final Value"].toFixed(2)}</p>
+              </div>
+              <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
+                <p><strong>Return %:</strong><br />{results.Results["Return %"].toFixed(2)}%</p>
+              </div>
             </div>
-            <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
-              <p><strong>Total Shares:</strong><br />{results.Results["Total Shares"].toFixed(2)}</p>
-            </div>
-            <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
-             <p><strong>Final Value:</strong><br />${results.Results["Final Value"].toFixed(2)}</p>
-            </div>
-            <div className="bg-gray-50 border rounded-lg p-4 shadow-sm">
-              <p><strong>Return %:</strong><br />{results.Results["Return %"].toFixed(2)}%</p>
-            </div>
-          </div>
-          <img
-            src={`data:image/png;base64,${results.Results.Plot}`}
-            alt="Portfolio Growth"
-            className="mt-6 w-full rounded shadow"
-          />
+            <img
+              src={`data:image/png;base64,${results.Results.Plot}`}
+              alt="Portfolio Growth"
+              className="mt-6 w-full rounded shadow"
+            />
           </div>
         )}
       </div>
