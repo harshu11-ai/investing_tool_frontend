@@ -32,7 +32,9 @@ export default function App() {
       console.error("Error fetching simulation:", err);
     }
   };
-
+  console.log("✅ results:", results);
+  console.log("🧪 results?.Results:", results?.Results);
+  console.log("💵 Invested:", results?.Results?.["Total Invested"]);  
   return (
     <div className="min-h-screen bg-blue-900 text-gray-900 p-6 font-sans">
       <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
