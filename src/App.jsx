@@ -16,7 +16,7 @@ export default function App() {
   const fetchData = async () => {
     console.log("Fetching data...");
     try {
-      const res = await axios.get("https://investing-tool.onrender.com", {
+      const res = await axios.get("https://investing-tool.onrender.com/weekday", {
         params: {
           ticker,
           start,
