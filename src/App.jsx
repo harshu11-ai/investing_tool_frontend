@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 
 export default function App() {
-  const FINNHUB_API_KEY = "d0nqljpr01qn5ghlea20d0nqljpr01qn5ghlea2g";
   const [ticker, setTicker] = useState("VOO");
   const [start, setStart] = useState("2019-01-01");
   const [end, setEnd] = useState("2024-01-01");
@@ -13,62 +13,6 @@ export default function App() {
 
   const [dartkMode, setDarkMode] = useState(false);
 
-  const [tickerInput, setTickerInput] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-
-  const fetchSuggestions = async (query) => {
-    try {
-      const res = await axios.get("https://finnhub.io/api/v1/search", {
-        params: {
-          q: query,
-          token: FINNHUB_API_KEY,
-        },
-      });
-      setSuggestions(res.data.result || []);
-    } catch (err) {
-      console.error("Suggestion fetch error:", err);
-    }
-  };
-
-  useEffect(() => {
-    if (tickerInput.length >= 2) {
-      fetchSuggestions(tickerInput);
-    } else {
-      setSuggestions([]);
-    }
-  }, [tickerInput]);
-
-  const renderSuggestions = () => (
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">
-        Ticker Symbol
-      </label>
-      <input
-        type="text"
-        value={tickerInput}
-        onChange={(e) => setTickerInput(e.target.value)}
-        className="w-full border rounded px-3 py-2"
-        placeholder="Search by company name or ticker"
-      />
-      {suggestions.length > 0 && (
-        <ul className="border rounded mt-1 bg-white max-h-40 overflow-y-auto shadow">
-          {suggestions.map((s) => (
-            <li
-              key={s.symbol}
-              className="p-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => {
-                setTickerInput(`${s.description} (${s.symbol})`);
-                setTicker(s.symbol); // sets ticker for the simulation call
-                setSuggestions([]);
-              }}
-            >
-              {s.description} ({s.symbol})
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
   const fetchData = async () => {
     console.log("Fetching data...");
     try {
@@ -101,9 +45,19 @@ export default function App() {
           Analyze portfolio growth by weekday, ticker, and strategy
         </p>
 
-        {/*Ticker Search Bar*/}
-        {renderSuggestions()}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Ticker Symbol
+            </label>
+            <input
+              type="text"
+              value={ticker}
+              onChange={(e) => setTicker(e.target.value)}
+              className="w-full border rounded px-3 py-2"
+            />
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Weekday
